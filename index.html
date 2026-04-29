@@ -247,34 +247,6 @@
       line-height: 1.6;
     }
 
-    /* ── PHOTO STRIP ── */
-    .photo-strip {
-      padding: 0;
-      overflow: hidden;
-      position: relative;
-    }
-    .photo-strip img {
-      width: 100%;
-      height: 480px;
-      object-fit: cover;
-      object-position: center 20%;
-      display: block;
-      filter: saturate(0.85);
-    }
-    .photo-strip-caption {
-      position: absolute;
-      bottom: 32px;
-      right: 60px;
-      background: var(--lime);
-      color: var(--navy);
-      font-weight: 700;
-      font-size: 0.8rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 10px 20px;
-      border-radius: 2px;
-    }
-
     /* ── FRIENDS SECTION ── */
     .friends-section {
       background: var(--navy);
@@ -369,7 +341,6 @@
       .stats-bar { padding: 32px 24px; }
       .features-inner { grid-template-columns: 1fr; }
       .friends-inner { grid-template-columns: 1fr; gap: 32px; }
-      .photo-strip img { height: 300px; }
       footer { padding: 28px 24px; flex-direction: column; text-align: center; }
     }
   </style>
@@ -459,12 +430,6 @@
       </div>
     </div>
   </section>
-
-  <!-- PHOTO STRIP -->
-  <div class="photo-strip">
-    <img src="IMG_6485.jpeg" alt="Aidan and crew post-match, medals in hand">
-    <div class="photo-strip-caption">Tournament Night — W's only</div>
-  </div>
 
   <!-- FRIENDS SECTION -->
   <section class="friends-section">
