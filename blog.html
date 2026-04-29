@@ -131,102 +131,10 @@
       color: var(--navy);
     }
 
-    /* ── BLOG GRID ── */
+    /* ── BLOG MAIN ── */
     .blog-main {
       padding: 40px 60px 100px;
     }
-
-    /* ── FEATURED POST ── */
-    .featured-post {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      background: var(--navy2);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
-      overflow: hidden;
-      margin-bottom: 32px;
-      transition: border-color 0.2s;
-      cursor: pointer;
-    }
-    .featured-post:hover { border-color: var(--lime); }
-    .featured-visual {
-      background: var(--slate);
-      min-height: 320px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 5rem;
-      position: relative;
-    }
-    .featured-visual::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(200,245,45,0.08), transparent);
-    }
-    .featured-body {
-      padding: 48px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-    .post-meta {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 16px;
-    }
-    .post-tag {
-      display: inline-block;
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding: 4px 10px;
-      border-radius: 3px;
-    }
-    .tag-recap { background: rgba(200,245,45,0.15); color: var(--lime); }
-    .tag-tips  { background: rgba(138,155,168,0.15); color: var(--gray); }
-    .post-date {
-      font-size: 0.78rem;
-      color: var(--gray);
-    }
-    .featured-label {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--lime);
-      border: 1px solid rgba(200,245,45,0.3);
-      padding: 3px 8px;
-      border-radius: 3px;
-    }
-    .featured-body h2 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: clamp(1.8rem, 3vw, 2.6rem);
-      letter-spacing: 0.03em;
-      line-height: 1.05;
-      margin-bottom: 14px;
-    }
-    .featured-body p {
-      font-size: 0.92rem;
-      color: var(--gray);
-      line-height: 1.75;
-      margin-bottom: 28px;
-    }
-    .read-more {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--lime);
-      text-decoration: none;
-      transition: gap 0.15s;
-    }
-    .read-more:hover { gap: 14px; }
 
     /* ── POST GRID ── */
     .post-grid {
@@ -239,14 +147,8 @@
       border: 1px solid rgba(255,255,255,0.07);
       border-radius: 10px;
       overflow: hidden;
-      transition: border-color 0.2s, transform 0.2s;
-      cursor: pointer;
       display: flex;
       flex-direction: column;
-    }
-    .post-card:hover {
-      border-color: var(--lime);
-      transform: translateY(-4px);
     }
     .card-visual {
       background: var(--slate);
@@ -274,40 +176,13 @@
       font-size: 1.35rem;
       letter-spacing: 0.04em;
       line-height: 1.1;
-      margin: 12px 0 10px;
+      margin-bottom: 10px;
+      color: var(--gray);
     }
     .card-body p {
       font-size: 0.84rem;
       color: var(--gray);
       line-height: 1.65;
-      flex: 1;
-      margin-bottom: 20px;
-    }
-
-    /* ── EMPTY STATE ── */
-    .empty-state {
-      text-align: center;
-      padding: 80px 24px;
-      color: var(--gray);
-      display: none;
-    }
-    .empty-state .empty-icon { font-size: 3rem; margin-bottom: 16px; }
-    .empty-state h3 {
-      font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.8rem;
-      letter-spacing: 0.04em;
-      color: var(--white);
-      margin-bottom: 8px;
-    }
-    .empty-state p { font-size: 0.9rem; line-height: 1.6; }
-
-    /* ── NO POSTS MESSAGE ── */
-    .no-posts {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 60px 24px;
-      color: var(--gray);
-      font-size: 0.9rem;
     }
 
     /* ── CTA STRIP ── */
@@ -375,8 +250,6 @@
     /* ── MOBILE ── */
     @media (max-width: 900px) {
       .post-grid { grid-template-columns: 1fr 1fr; }
-      .featured-post { grid-template-columns: 1fr; }
-      .featured-visual { min-height: 200px; }
     }
     @media (max-width: 600px) {
       nav { padding: 16px 24px; }
@@ -406,123 +279,45 @@
   <div class="page-header">
     <div class="header-tag">From the Court</div>
     <h1>Game Recaps &<br><span>Thoughts.</span></h1>
-    <p>Post-match breakdowns, hot takes, and the occasional actually useful tip.</p>
+    <p>Post-match breakdowns, hot takes, and the occasional actually useful tip. Posts coming soon.</p>
   </div>
 
   <!-- FILTER TABS -->
   <div class="filter-bar">
-    <button class="filter-btn active" onclick="filterPosts('all', this)">All Posts</button>
-    <button class="filter-btn" onclick="filterPosts('recap', this)">Game Recaps</button>
-    <button class="filter-btn" onclick="filterPosts('tips', this)">Tips & Thoughts</button>
+    <button class="filter-btn active">All Posts</button>
+    <button class="filter-btn">Game Recaps</button>
+    <button class="filter-btn">Tips & Thoughts</button>
   </div>
 
   <!-- BLOG MAIN -->
   <div class="blog-main">
+    <div class="post-grid">
 
-    <!-- 
-      ============================================================
-      FEATURED POST — Replace this with your most recent/best post
-      ============================================================
-      - Change data-type to "recap" or "tips" to match the category
-      - Update the emoji in .featured-visual to match the vibe
-      - Fill in the title, date, and preview text
-      - Update the href on the Read More link if you have a full post page
-      ============================================================
-    -->
-    <div class="featured-post" data-type="recap" id="featured">
-      <div class="featured-visual">🏆</div>
-      <div class="featured-body">
-        <div class="post-meta">
-          <span class="post-tag tag-recap">Game Recap</span>
-          <span class="featured-label">Featured</span>
-          <span class="post-date">— Add your date here</span>
-        </div>
-        <!-- YOUR POST TITLE -->
-        <h2>Your Most Recent Match Title Goes Here</h2>
-        <!-- YOUR PREVIEW TEXT (2-3 sentences max) -->
-        <p>Write a short preview of the match here — who you played, what went down, the key moment that decided it. Keep it 2-3 sentences to hook the reader.</p>
-        <a class="read-more" href="#">Read Full Recap →</a>
-      </div>
-    </div>
-
-    <!-- 
-      ============================================================
-      POST GRID — Add or remove .post-card blocks as needed
-      ============================================================
-      HOW TO ADD A POST:
-        1. Copy one of the .post-card blocks below
-        2. Set data-type to "recap" or "tips"
-        3. Update the emoji, tag, date, title, and preview text
-        4. Update the Read More link if needed
-
-      HOW TO REMOVE A POST:
-        Delete the entire .post-card block
-
-      The filter buttons above will automatically show/hide cards
-      based on their data-type attribute — no extra code needed.
-      ============================================================
-    -->
-    <div class="post-grid" id="post-grid">
-
-      <!-- POST 1 — RECAP -->
-      <div class="post-card" data-type="recap">
+      <div class="post-card">
         <div class="card-visual">🏓</div>
         <div class="card-body">
-          <div class="post-meta">
-            <span class="post-tag tag-recap">Game Recap</span>
-            <span class="post-date">Add date</span>
-          </div>
-          <!-- YOUR POST TITLE -->
-          <h3>Match Title Goes Here</h3>
-          <!-- YOUR PREVIEW TEXT -->
-          <p>Short summary of the match — what happened, who showed up, who made excuses after.</p>
-          <a class="read-more" href="#">Read More →</a>
+          <h3>Coming Soon</h3>
+          <p>First recap dropping after the next match. Check back soon.</p>
         </div>
       </div>
 
-      <!-- POST 2 — TIPS -->
-      <div class="post-card" data-type="tips">
+      <div class="post-card">
         <div class="card-visual">💡</div>
         <div class="card-body">
-          <div class="post-meta">
-            <span class="post-tag tag-tips">Tips & Thoughts</span>
-            <span class="post-date">Add date</span>
-          </div>
-          <!-- YOUR POST TITLE -->
-          <h3>Tip or Thought Title Goes Here</h3>
-          <!-- YOUR PREVIEW TEXT -->
-          <p>A quick preview of your tip or thought — what's the main point, why does it matter on the court.</p>
-          <a class="read-more" href="#">Read More →</a>
+          <h3>Coming Soon</h3>
+          <p>Tips, thoughts, and hot takes from the court. Stay tuned.</p>
         </div>
       </div>
 
-      <!-- POST 3 — RECAP -->
-      <div class="post-card" data-type="recap">
+      <div class="post-card">
         <div class="card-visual">🎯</div>
         <div class="card-body">
-          <div class="post-meta">
-            <span class="post-tag tag-recap">Game Recap</span>
-            <span class="post-date">Add date</span>
-          </div>
-          <!-- YOUR POST TITLE -->
-          <h3>Match Title Goes Here</h3>
-          <!-- YOUR PREVIEW TEXT -->
-          <p>Short summary of the match — what happened, who showed up, who made excuses after.</p>
-          <a class="read-more" href="#">Read More →</a>
+          <h3>Coming Soon</h3>
+          <p>More posts on the way — come back after the next match.</p>
         </div>
       </div>
 
-      <!-- ── ADD MORE POSTS BY COPYING A BLOCK ABOVE THIS LINE ── -->
-
     </div>
-
-    <!-- Shows when filter returns no results -->
-    <div class="empty-state" id="empty-state">
-      <div class="empty-icon">🏓</div>
-      <h3>No Posts Yet</h3>
-      <p>Nothing in this category yet — check back after the next match.</p>
-    </div>
-
   </div>
 
   <!-- CTA STRIP -->
@@ -539,40 +334,6 @@
     <a class="footer-logo" href="index.html">Aidan PB</a>
     <p>Built by Aidan · Powered by competitive energy & questionable stats</p>
   </footer>
-
-  <script>
-    function filterPosts(type, btn) {
-      // Update active button
-      document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-
-      const featured = document.getElementById('featured');
-      const cards = document.querySelectorAll('.post-card');
-      const emptyState = document.getElementById('empty-state');
-
-      // Filter featured post
-      if (type === 'all' || featured.dataset.type === type) {
-        featured.style.display = 'grid';
-      } else {
-        featured.style.display = 'none';
-      }
-
-      // Filter grid cards
-      let visibleCount = 0;
-      cards.forEach(card => {
-        if (type === 'all' || card.dataset.type === type) {
-          card.style.display = 'flex';
-          visibleCount++;
-        } else {
-          card.style.display = 'none';
-        }
-      });
-
-      // Show empty state if nothing visible
-      const featuredVisible = featured.style.display !== 'none';
-      emptyState.style.display = (!featuredVisible && visibleCount === 0) ? 'block' : 'none';
-    }
-  </script>
 
 </body>
 </html>
