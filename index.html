@@ -1,91 +1,461 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Aidan Pickleball Booking</title>
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aidan's Pickleball | Book. Play. Dominate.</title>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-<body style="font-family: Arial, sans-serif; max-width: 900px; margin: auto; line-height: 1.6; padding: 20px;">
+    :root {
+      --lime: #c8f52d;
+      --navy: #0d1b2a;
+      --navy2: #12253a;
+      --slate: #1e3a52;
+      --white: #f4f8f2;
+      --gray: #8a9ba8;
+      --accent: #ff5e1a;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--navy);
+      color: var(--white);
+      font-family: 'DM Sans', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 48px;
+      background: linear-gradient(to bottom, rgba(13,27,42,0.97), transparent);
+      backdrop-filter: blur(2px);
+    }
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.08em;
+      color: var(--lime);
+    }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a {
+      color: var(--gray);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--lime); }
+
+    /* ── HERO ── */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 60px 80px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('IMG_6485.jpeg');
+      background-size: cover;
+      background-position: center top;
+      filter: brightness(0.45) saturate(0.9);
+      transform: scale(1.04);
+      animation: slowzoom 18s ease-in-out infinite alternate;
+    }
+    @keyframes slowzoom {
+      from { transform: scale(1.04); }
+      to   { transform: scale(1.12); }
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to top,
+        var(--navy) 0%,
+        rgba(13,27,42,0.55) 50%,
+        transparent 100%
+      );
+    }
+    .hero-content { position: relative; z-index: 2; max-width: 740px; }
+    .hero-tag {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--navy);
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 2px;
+      margin-bottom: 24px;
+      animation: fadein 0.8s ease both;
+    }
+    .hero h1 {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(3.8rem, 9vw, 8rem);
+      line-height: 0.92;
+      letter-spacing: 0.02em;
+      animation: slidein 0.9s cubic-bezier(0.22,1,0.36,1) both;
+      animation-delay: 0.1s;
+    }
+    .hero h1 span { color: var(--lime); }
+    .hero-sub {
+      font-size: 1.15rem;
+      font-weight: 300;
+      color: rgba(244,248,242,0.75);
+      margin: 20px 0 36px;
+      max-width: 480px;
+      line-height: 1.6;
+      animation: fadein 1s ease both;
+      animation-delay: 0.35s;
+    }
+    .hero-ctas {
+      display: flex; gap: 16px; flex-wrap: wrap;
+      animation: fadein 1s ease both;
+      animation-delay: 0.5s;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--lime);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 3px;
+      transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+      border: none; cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #deff52;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(200,245,45,0.35);
+    }
+    .btn-ghost {
+      display: inline-block;
+      border: 1.5px solid rgba(244,248,242,0.35);
+      color: var(--white);
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 36px;
+      border-radius: 3px;
+      transition: border-color 0.2s, background 0.2s;
+    }
+    .btn-ghost:hover {
+      border-color: var(--lime);
+      background: rgba(200,245,45,0.07);
+    }
+
+    /* ── STATS BAR ── */
+    .stats-bar {
+      background: var(--navy2);
+      border-top: 1px solid rgba(255,255,255,0.06);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      padding: 36px 60px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 3rem;
+      color: var(--lime);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gray);
+      margin-top: 6px;
+    }
+
+    /* ── SECTION SHARED ── */
+    section { padding: 96px 60px; }
+    .section-tag {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--lime);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      letter-spacing: 0.03em;
+      line-height: 1;
+      margin-bottom: 20px;
+    }
+    .section-desc {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 520px;
+    }
+
+    /* ── FEATURES GRID ── */
+    .features { background: var(--navy2); }
+    .features-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .features-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--slate);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 8px;
+      padding: 28px 24px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .feature-card:hover {
+      border-color: var(--lime);
+      transform: translateY(-4px);
+    }
+    .feature-icon { font-size: 1.8rem; margin-bottom: 14px; }
+    .feature-title {
+      font-weight: 700;
+      font-size: 0.95rem;
+      margin-bottom: 8px;
+    }
+    .feature-desc {
+      font-size: 0.82rem;
+      color: var(--gray);
+      line-height: 1.6;
+    }
+
+    /* ── PHOTO STRIP ── */
+    .photo-strip {
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+    }
+    .photo-strip img {
+      width: 100%;
+      height: 480px;
+      object-fit: cover;
+      object-position: center 20%;
+      display: block;
+      filter: saturate(0.85);
+    }
+    .photo-strip-caption {
+      position: absolute;
+      bottom: 32px;
+      right: 60px;
+      background: var(--lime);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.8rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 10px 20px;
+      border-radius: 2px;
+    }
+
+    /* ── CTA ── */
+    .cta-section {
+      background: var(--lime);
+      color: var(--navy);
+      text-align: center;
+      padding: 80px 60px;
+    }
+    .cta-section .section-tag { color: rgba(13,27,42,0.55); }
+    .cta-section .section-title { color: var(--navy); }
+    .cta-section .section-desc { color: rgba(13,27,42,0.7); margin: 0 auto 36px; }
+    .btn-dark {
+      display: inline-block;
+      background: var(--navy);
+      color: var(--lime);
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-decoration: none;
+      padding: 16px 40px;
+      border-radius: 3px;
+      margin: 6px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+    .btn-dark:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 28px rgba(13,27,42,0.35);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #080f18;
+      padding: 32px 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .footer-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      color: var(--lime);
+      letter-spacing: 0.1em;
+    }
+    footer p {
+      font-size: 0.78rem;
+      color: var(--gray);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadein {
+      from { opacity: 0; } to { opacity: 1; }
+    }
+    @keyframes slidein {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── MOBILE ── */
+    @media (max-width: 700px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      .hero { padding: 0 24px 60px; }
+      section { padding: 64px 24px; }
+      .stats-bar { padding: 32px 24px; }
+      .features-inner { grid-template-columns: 1fr; }
+      .photo-strip img { height: 300px; }
+      footer { padding: 28px 24px; flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">🏓 Aidan PB</div>
+    <div class="nav-links">
+      <a href="booking.html">Book</a>
+      <a href="blog.html">Blog</a>
+      <a href="#stats">Stats</a>
+    </div>
+  </nav>
 
   <!-- HERO -->
-  <div style="text-align: center; padding: 30px 10px;">
-    <h1>🏓 Aidan’s Pickleball Booking Platform</h1>
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="hero-tag">🏆 Mount Gilead's #1 Pickleball Platform</div>
+      <h1>Book.<br>Play.<br><span>Dominate.</span></h1>
+      <p class="hero-sub">
+        Schedule matches with Aidan. Track the chaos. Relive the highlights.
+        Skill level irrelevant — competitive energy mandatory.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="booking.html">Book a Match →</a>
+        <a class="btn-ghost" href="blog.html">Read the Blog</a>
+      </div>
+    </div>
+  </section>
 
-    <p style="font-size: 18px;">
-      Book matches. Track the chaos. Relive the highlights.
-    </p>
-
-    <a href="booking.html">
-      <button style="padding: 12px 22px; font-size: 16px; cursor: pointer; margin-top: 10px;">
-        Book a Match
-      </button>
-    </a>
-
-    <br><br>
-
-    <a href="blog.html">📖 Read Game Blog</a>
+  <!-- STATS BAR -->
+  <div class="stats-bar" id="stats">
+    <div class="stat">
+      <div class="stat-num">98<span style="color:var(--white);font-size:2rem">%</span></div>
+      <div class="stat-label">Win Rate</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">1</div>
+      <div class="stat-label">Matches "Almost Lost"</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">47</div>
+      <div class="stat-label">Opponent Excuses Logged</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Competitive Energy</div>
+    </div>
   </div>
 
-  <hr>
-
-  <!-- HERO IMAGE -->
-  <img src="https://images.unsplash.com/photo-1599058917765-a780eda07a3e?auto=format&fit=crop&w=1200&q=80"
-       style="width:100%; border-radius:10px;"
-       alt="Pickleball court">
-
-  <hr>
-
   <!-- FEATURES -->
-  <h2>🔥 What This Platform Is</h2>
+  <section class="features">
+    <div class="features-inner">
+      <div>
+        <div class="section-tag">What We're About</div>
+        <h2 class="section-title">Peak Recreational Competition.</h2>
+        <p class="section-desc">
+          This isn't just a booking platform. It's a battleground tracker, a bragging-rights archive,
+          and a hall of fame for every dink, drive, and drop shot ever played.
+        </p>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">📅</div>
+          <div class="feature-title">Easy Booking</div>
+          <div class="feature-desc">Schedule a match in seconds. No excuses accepted at sign-up.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📖</div>
+          <div class="feature-title">Game Recaps</div>
+          <div class="feature-desc">Daily blog coverage of every clutch moment (and every fluke).</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <div class="feature-title">Live Stats</div>
+          <div class="feature-desc">Definitely accurate win rates and opponent excuse tracking.</div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🏆</div>
+          <div class="feature-title">Hall of Fame</div>
+          <div class="feature-desc">Immortalize your best (or worst) match moments forever.</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  <ul>
-    <li>Schedule matches with Aidan (skill level irrelevant)</li>
-    <li>Read daily game recaps</li>
-    <li>Track questionable “almost wins”</li>
-    <li>Experience peak recreational competition energy</li>
-  </ul>
+  <!-- PHOTO STRIP -->
+  <div class="photo-strip">
+    <img src="IMG_6485.jpeg" alt="Aidan and crew post-match, medals in hand">
+    <div class="photo-strip-caption">Tournament Night — W's only</div>
+  </div>
 
-  <hr>
-
-  <!-- IMAGES SECTION -->
-  <h2>📸 Match Energy</h2>
-
-  <img src="https://images.unsplash.com/photo-1609710228159-0fa9bd7c2d2a?auto=format&fit=crop&w=900&q=80"
-       style="width:100%; border-radius:10px;"
-       alt="Pickleball action">
-
-  <p>Every match starts friendly… until it doesn’t.</p>
-
-  <img src="https://images.unsplash.com/photo-1626248801379-51a0748a0c7c?auto=format&fit=crop&w=900&q=80"
-       style="width:100%; border-radius:10px; margin-top:15px;"
-       alt="Pickleball paddle">
-
-  <p>Equipment: standard. Vibes: competitive.</p>
-
-  <hr>
-
-  <!-- STATS -->
-  <h2>📊 Live Stats (Definitely Accurate)</h2>
-
-  <p>Win Rate: 98%</p>
-  <p>Matches “almost lost”: 1</p>
-  <p>Opponent excuses logged: 47</p>
-
-  <hr>
-
-  <!-- LINKS -->
-  <h2>🔗 Explore</h2>
-
-  <p>
-    <a href="booking.html">👉 Book a Match</a><br>
-    <a href="blog.html">👉 Read Game Blog</a>
-  </p>
-
-  <hr>
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="section-tag">Ready to Run It?</div>
+    <h2 class="section-title">Step On Court.<br>Leave a Legend.</h2>
+    <p class="section-desc">
+      Whether you're a seasoned player or a first-timer with a borrowed paddle —
+      there's a match with your name on it.
+    </p>
+    <a class="btn-dark" href="booking.html">Book a Match →</a>
+    <a class="btn-dark" href="blog.html" style="background: rgba(13,27,42,0.12); color: var(--navy); border: 2px solid var(--navy);">Read the Blog</a>
+  </section>
 
   <!-- FOOTER -->
-  <p style="text-align: center; font-size: 12px; color: gray;">
-    Built by Aidan • Powered by competitive energy & questionable stats
-  </p>
+  <footer>
+    <div class="footer-logo">🏓 Aidan PB</div>
+    <p>Built by Aidan · Powered by competitive energy & questionable stats</p>
+  </footer>
 
 </body>
 </html>
