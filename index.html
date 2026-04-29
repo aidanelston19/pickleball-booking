@@ -275,6 +275,32 @@
       border-radius: 2px;
     }
 
+    /* ── FRIENDS SECTION ── */
+    .friends-section {
+      background: var(--navy);
+      padding: 96px 60px;
+    }
+    .friends-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .friends-quote {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.05;
+      letter-spacing: 0.02em;
+      color: var(--white);
+    }
+    .friends-quote span { color: var(--lime); }
+    .friends-body {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.8;
+    }
+    .friends-body p + p { margin-top: 16px; }
+
     /* ── CTA ── */
     .cta-section {
       background: var(--lime);
@@ -342,6 +368,7 @@
       section { padding: 64px 24px; }
       .stats-bar { padding: 32px 24px; }
       .features-inner { grid-template-columns: 1fr; }
+      .friends-inner { grid-template-columns: 1fr; gap: 32px; }
       .photo-strip img { height: 300px; }
       footer { padding: 28px 24px; flex-direction: column; text-align: center; }
     }
@@ -367,8 +394,8 @@
       <div class="hero-tag">🏆 Mount Gilead's #1 Pickleball Platform</div>
       <h1>Book.<br>Play.<br><span>Dominate.</span></h1>
       <p class="hero-sub">
-        Schedule matches with Aidan. Track the chaos. Relive the highlights.
-        Skill level irrelevant — competitive energy mandatory.
+        Schedule matches with Aidan. Skill level irrelevant.
+        Pickleball is one of the best ways to meet people — so come out and play.
       </p>
       <div class="hero-ctas">
         <a class="btn-primary" href="booking.html">Book a Match →</a>
@@ -439,13 +466,34 @@
     <div class="photo-strip-caption">Tournament Night — W's only</div>
   </div>
 
+  <!-- FRIENDS SECTION -->
+  <section class="friends-section">
+    <div class="friends-inner">
+      <div class="friends-quote">
+        The best sport for <span>meeting people</span> you didn't know last week.
+      </div>
+      <div class="friends-body">
+        <p>
+          Pickleball has a way of pulling people together. You show up not knowing anyone,
+          you play a few games, and somehow you're making plans for next weekend.
+          That's just how the sport works.
+        </p>
+        <p>
+          Whether you're new to town, looking to get out more, or just want a reason
+          to get outside — this is a good place to start. All skill levels welcome.
+          Serious players, casual players, complete beginners — doesn't matter.
+        </p>
+      </div>
+    </div>
+  </section>
+
   <!-- CTA -->
   <section class="cta-section">
     <div class="section-tag">Ready to Run It?</div>
     <h2 class="section-title">Step On Court.<br>Leave a Legend.</h2>
     <p class="section-desc">
-      Whether you're a seasoned player or a first-timer with a borrowed paddle —
-      there's a match with your name on it.
+      First-timer with a borrowed paddle or seasoned vet —
+      there's a spot on the court with your name on it.
     </p>
     <a class="btn-dark" href="booking.html">Book a Match →</a>
     <a class="btn-dark" href="blog.html" style="background: rgba(13,27,42,0.12); color: var(--navy); border: 2px solid var(--navy);">Read the Blog</a>
